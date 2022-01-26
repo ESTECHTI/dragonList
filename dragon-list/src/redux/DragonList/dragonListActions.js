@@ -1,8 +1,19 @@
 import DragonList from '../../models/dragon-list';
+import dragonListTypes from './dragonListTypes';
 
-export function returnDragonList() {
+function returnUpdateDragonList(data) {
+  return {
+    type: dragonListTypes.SHOW_DRAGON_LIST,
+    payload: data
+  }
+}
+
+export const returnDragonList = () => {
   return (dispatch) => {
-    const response = DragonList.getDragonList()
-    console.log('response', response)
+    DragonList.getDragonList()
+      .then((response) => {
+        console.log('response.data', response.data)
+        dispatch(returnUpdateDragonList(response.data))
+      })
   }
 }
