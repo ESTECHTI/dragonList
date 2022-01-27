@@ -4,7 +4,7 @@ import dragonListReducer from './DragonList/dragonListReducer';
 import dragonLoginReducer from './DragonLogin/dragonLoginReducer';
 
 const rootReducer = combineReducers({
-  dragonListReducer: dragonListReducer,
+  dragonsList: dragonListReducer,
   dragonLogin: dragonLoginReducer,
 })
 

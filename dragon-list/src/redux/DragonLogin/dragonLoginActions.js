@@ -1,10 +1,7 @@
 import dragonLoginTypes from './dragonLoginTypes';
-import { createBrowserHistory } from 'history';
-
-export const browserHistory = createBrowserHistory();
 
 function updateInputEmail(data) {
-  console.log('email', data)
+  console.log('user', data)
   return {
     type: dragonLoginTypes.DRAGON_LOGIN_USER,
     payload: data
@@ -28,12 +25,5 @@ export const handleEmailChange = (event) => {
 export const handlePasswordChange = (event) => {
   return (dispatch) => {
     dispatch(updateInputPassword(event.target.value))
-  }
-}
-
-export const handleLoginAccess = () => {
-  console.log('click')
-  return () => {
-    browserHistory.push('/dragonList')
   }
 }

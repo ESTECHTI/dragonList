@@ -8,13 +8,13 @@ import thunk from 'redux-thunk';
 
 import reducers from './redux/RootReducer'
 import './index.css';
-import AllRoutes from './router/index'
+import Router from './router/index'
 import reportWebVitals from './reportWebVitals';
 
 const store = applyMiddleware(thunk, multi, promise)(createStore)(reducers)
 ReactDOM.render(
   <Provider store={store}>
-    <AllRoutes />
+    <Router />
   </Provider>,
   document.getElementById('root')
 );

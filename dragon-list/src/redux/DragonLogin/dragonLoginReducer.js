@@ -1,6 +1,8 @@
 import dragonLoginTypes from "./dragonLoginTypes";
 
 const INITIAL_STATE = {
+  dragonUser: 'reactPlayer',
+  dragonPassword: 'react123',
   dragonLoginUser: '',
   dragonLoginPassword: '',
 }
@@ -16,6 +18,16 @@ const dragonLoginReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         dragonLoginPassword: action.payload
+      };
+    case dragonLoginTypes.DRAGON_USER:
+      return {
+        ...state,
+        dragonUser: action.payload
+      }
+    case dragonLoginTypes.DRAGON_PASSWORD:
+      return {
+        ...state,
+        dragonPassword: action.payload
       }
   
     default:
