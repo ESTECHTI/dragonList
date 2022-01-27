@@ -1,0 +1,26 @@
+@import '../scss/dragonsMixins.scss';
+
+.card--elements {
+  cursor: pointer;
+}
+.card--elements:active {
+  transform: translateY(4px);
+}
+.body--elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  .body--elements-title {
+    @include for-title
+  }
+  
+  .body--elements-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+  }
+}

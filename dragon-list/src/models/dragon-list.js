@@ -10,4 +10,9 @@ export default class DragonList {
 
     return res
   }
+  
+  static async getDragonDetails(id) {
+    const res = await DragonApi.get(`/api/v1/dragon/${id}`)
+    return res
+  }
 }
