@@ -6,45 +6,48 @@ import { returnDragonDetails } from '../../redux/DragonDetails/dragonDetailsActi
 import { Card } from '../../components/Card/Card'
 import './dragonList.scss'
 class DragonsList extends React.Component {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(props) {
-    super(props);
-    
-  }
   
   componentDidMount() {
-    this.props.returnDragonList()
-    this.dragonsCardsList()
-  }
+
+   this.props.returnDragonList()
+   this.dragonsCardsList()
+    console.log('aqui')
+
+};
   
-  dragonsDetailsItems = (item) => {
-    this.props.returnDragonDetails(item.id)
-    this.props.history.push(`/dragonDetails/${item.id}`);
-  }
+dragonsDetailsItems = async (item) => {
+   await this.props.returnDragonDetails(item.id)
+   this.props.history.push(`/dragonDetails/${item.id}`);
+ }
   
-  dragonsCardsList() {
-    const obj = [...this.props.dragonsList]
-    obj.sort(function(a, b) { 
-      if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
-      if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
-      return 0;                   
-    });
-    return obj.map((item, i) => {
-      return (
-        <Card className='card--elements' key={i} label={item.name} onClick={() => this.dragonsDetailsItems(item)}/>
-      )
-    })
-  }
-  
+dragonsCardsList = () => {
+   const obj = [...this.props.dragonsList]
+   console.log('this.props.dragonsList', this.props.dragonsList)
+   obj.sort(function(a, b) { 
+     if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+     if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+     return 0;                   
+   });
+   return obj.map((item, i) => {
+     return (
+       <Card className='card--elements' key={i} label={item.name} onClick={() => this.dragonsDetailsItems(item)}/>
+     )
+   })
+ }
   render() {
-    return (
-      <div className='body--elements'>
-        <p className='body--elements-title'>Dragons List Names</p>
-        <div className='body--elements-cards'>
-          {this.dragonsCardsList()}
-        </div>
+  return (
+    <div className='body--elements'>
+      <p className='body--elements-title'>Dragons List Names</p>
+      <div className='body--elements-cards'>
+        {
+          this.props.dragonsList.length >= 0 ? (
+            this.dragonsCardsList()
+          )
+            : (<></>)
+        }
       </div>
-    )
+    </div>
+  )
   }
 }
 

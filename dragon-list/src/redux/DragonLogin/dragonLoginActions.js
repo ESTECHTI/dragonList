@@ -1,7 +1,6 @@
 import dragonLoginTypes from './dragonLoginTypes';
 
 function updateInputEmail(data) {
-  console.log('user', data)
   return {
     type: dragonLoginTypes.DRAGON_LOGIN_USER,
     payload: data
@@ -9,7 +8,6 @@ function updateInputEmail(data) {
 }
 
 function updateInputPassword(data) {
-  console.log('password', data)
   return {
     type: dragonLoginTypes.DRAGON_LOGIN_PASSWORD,
     payload: data

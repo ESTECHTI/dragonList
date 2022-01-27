@@ -14,11 +14,7 @@ class DragonsDetails extends React.Component {
     return (
       <div className='body--elements-details'>
         olá mundo
-        <p>{this.props.dragonDetails.createdAt}</p>
-        <p>{this.props.dragonDetails.histories}</p>
-        <p>{this.props.dragonDetails.id}</p>
-        <p>{this.props.dragonDetails.name}</p>
-        <p>{this.props.dragonDetails.type}</p>
+        <p>{this.props.dragonDetails}</p>
         
       </div>
     )
@@ -30,8 +26,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  // returnDragonList,
-  // returnDragonDetails
+  
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(DragonsDetails);
