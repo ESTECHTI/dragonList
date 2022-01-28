@@ -9,6 +9,7 @@ function returnUpdateDragonDetails(data) {
 }
 
 export const returnDragonDetails = (id) => {
+  console.log('id', id)
   return (dispatch) => {
     DragonList.getDragonDetails(id)
       .then((response) => {

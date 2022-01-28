@@ -1,9 +1,10 @@
 import React, { useEffect, useState }  from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { returnDragonList } from '../../redux/DragonList/dragonListActions';
-import { returnDragonDetails } from '../../redux/DragonDetails/dragonDetailsActions';
+import { returnDragonList, removeDragon } from '../../redux/DragonList/dragonListActions';
+import { returnDragonDetails } from '../../redux/DragonDetails/dragonDetailsActions.js';
 import { Card } from '../../components/Card/Card';
+import { Button } from '../../components/Button/Button'
 import './dragonList.scss';
 
 const DragonsList = () =>  {
@@ -23,9 +24,20 @@ const DragonsList = () =>  {
     setCurrDragonList(dragonList)
   }, [dragonList]);
   
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem('dragon-details');
+    }
+  })
+  
   const dragonsDetailsItems = (item) => {
-    returnDragonDetails(item.id)
+    dispatch(returnDragonDetails(item.id))
     navigate(`/dragonDetails/${item.id}`);
+  }
+  
+  const removeDragonCard = (item) => {
+    console.log('item', item)
+    dispatch(removeDragon(item.id))
   }
   
  const dragonsCardsList = () => {
@@ -37,7 +49,12 @@ const DragonsList = () =>  {
   });
   return obj.map((item, i) => {
     return (
-      <Card className='card--elements' key={i} label={item.name} onClick={() => dragonsDetailsItems(item)}/>
+      <div className='card'>
+        <Card className='card--elements' key={i} label={item.name} onClick={() => dragonsDetailsItems(item)}/>
+        <div className='card--elements-button'>
+          <Button style={{ background: 'red' }} onClick={() => removeDragonCard(item)} label="Remove" />
+        </div>
+      </div>
     )
   })
 }

@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 import './dragonsDetails.scss'
+import { formatDate } from '../../Controller/Controller.js'
 
 const DragonsDetails = () => {
-  
   const dragonDetails = useSelector(state => state.dragonDetailsItens.dragonDetails);
   const [currdragonDetails, setCurrdragonDetails] = useState(dragonDetails);
   
-  console.log('currdragonDetails', currdragonDetails)
-  
   useEffect(() => {
+    
+    localStorage.setItem('dragon-details', JSON.stringify(dragonDetails))
+
     setCurrdragonDetails(dragonDetails)
-  }, [dragonDetails]);
+  }, [dragonDetails])
   
   return (
     <div className='body--elements-details'>
-      olá mundo
-      {/* <p>{this.props.dragonDetails}</p> */}
+      <p>Detalhes do Dragão</p>
+      <p>{formatDate(currdragonDetails.createdAt)}</p>
+      <p>{currdragonDetails.name}</p>
+      <p>{currdragonDetails.type}</p>
       
     </div>
   )

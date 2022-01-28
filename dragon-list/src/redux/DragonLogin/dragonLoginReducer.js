@@ -1,8 +1,8 @@
 import dragonLoginTypes from "./dragonLoginTypes";
 
 const INITIAL_STATE = {
-  dragonUser: 'reactPlayer',
-  dragonPassword: 'react123',
+  dragonUser: 'dragon',
+  dragonPassword: 'dragon',
   dragonLoginUser: '',
   dragonLoginPassword: '',
 }

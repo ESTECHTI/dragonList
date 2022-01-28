@@ -16,3 +16,12 @@ export const returnDragonList = () => {
       })
   }
 }
+
+export const removeDragon = (id) => {
+  return (dispatch) => {
+    DragonList.deleteDragon(id)
+      .then((response) => {
+        dispatch(returnUpdateDragonList(response.data))
+      })
+  }
+}

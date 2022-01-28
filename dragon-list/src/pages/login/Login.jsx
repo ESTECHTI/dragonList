@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { returnDragonList } from '../../redux/DragonList/dragonListActions'
 import {Input} from '../../components/Input/Input'
-import { LoginButton } from '../../components/Button/Button';
+import { Button } from '../../components/Button/Button';
 import { handleEmailChange, handlePasswordChange } from '../../redux/DragonLogin/dragonLoginActions';
 import './Login.scss';
 
@@ -51,7 +51,7 @@ const Login = () => {
         value={dragonLoginPassword}
       />
       <div className="login--elements-button">
-        <LoginButton label="Acessar" onClick={handleLoginAccess}/>
+        <Button label="Acessar" onClick={handleLoginAccess}/>
       </div>
     </div>
   )
