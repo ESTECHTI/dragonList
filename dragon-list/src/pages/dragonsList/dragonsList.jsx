@@ -1,63 +1,55 @@
-import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { useEffect, useState }  from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import { returnDragonList } from '../../redux/DragonList/dragonListActions';
 import { returnDragonDetails } from '../../redux/DragonDetails/dragonDetailsActions';
-import { Card } from '../../components/Card/Card'
-import './dragonList.scss'
-class DragonsList extends React.Component {
-  
-  componentDidMount() {
+import { Card } from '../../components/Card/Card';
+import './dragonList.scss';
 
-   this.props.returnDragonList()
-   this.dragonsCardsList()
-    console.log('aqui')
+const DragonsList = () =>  {
+  
+  const dragonList = useSelector(state => state.dragonsList.dragonList);
+  const [currDragonList, setCurrDragonList] = useState(dragonList);
+  console.log('currDragonList', currDragonList)
+  const dispatch = useDispatch();
+  
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    dispatch(returnDragonList())
+  }, [dispatch]);
+  
+  useEffect(() => {
+    setCurrDragonList(dragonList)
+  }, [dragonList]);
+  
+  const dragonsDetailsItems = (item) => {
+    returnDragonDetails(item.id)
+    navigate(`/dragonDetails/${item.id}`);
+  }
+  
+ const dragonsCardsList = () => {
+  const obj = [...currDragonList]
+    obj.sort(function(a, b) { 
+    if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+    if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+    return 0;                   
+  });
+  return obj.map((item, i) => {
+    return (
+      <Card className='card--elements' key={i} label={item.name} onClick={() => dragonsDetailsItems(item)}/>
+    )
+  })
+}
 
-};
-  
-dragonsDetailsItems = async (item) => {
-   await this.props.returnDragonDetails(item.id)
-   this.props.history.push(`/dragonDetails/${item.id}`);
- }
-  
-dragonsCardsList = () => {
-   const obj = [...this.props.dragonsList]
-   console.log('this.props.dragonsList', this.props.dragonsList)
-   obj.sort(function(a, b) { 
-     if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
-     if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
-     return 0;                   
-   });
-   return obj.map((item, i) => {
-     return (
-       <Card className='card--elements' key={i} label={item.name} onClick={() => this.dragonsDetailsItems(item)}/>
-     )
-   })
- }
-  render() {
   return (
     <div className='body--elements'>
       <p className='body--elements-title'>Dragons List Names</p>
       <div className='body--elements-cards'>
-        {
-          this.props.dragonsList.length >= 0 ? (
-            this.dragonsCardsList()
-          )
-            : (<></>)
-        }
+        {dragonsCardsList()}
       </div>
     </div>
   )
-  }
 }
 
-const mapStateToProps = (state) => ({
-  dragonsList: state.dragonsList.dragonList,
-})
-
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  returnDragonList,
-  returnDragonDetails
-}, dispatch)
-
-export default connect(mapStateToProps, mapDispatchToProps)(DragonsList)
+export default DragonsList

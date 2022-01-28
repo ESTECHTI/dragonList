@@ -1,32 +1,25 @@
-import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 import './dragonsDetails.scss'
 
-class DragonsDetails extends React.Component {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(props) {
-    super(props)
-    
-  }
+const DragonsDetails = () => {
   
-  render() {
-    return (
-      <div className='body--elements-details'>
-        olá mundo
-        <p>{this.props.dragonDetails}</p>
-        
-      </div>
-    )
-  }
+  const dragonDetails = useSelector(state => state.dragonDetailsItens.dragonDetails);
+  const [currdragonDetails, setCurrdragonDetails] = useState(dragonDetails);
+  
+  console.log('currdragonDetails', currdragonDetails)
+  
+  useEffect(() => {
+    setCurrdragonDetails(dragonDetails)
+  }, [dragonDetails]);
+  
+  return (
+    <div className='body--elements-details'>
+      olá mundo
+      {/* <p>{this.props.dragonDetails}</p> */}
+      
+    </div>
+  )
 }
 
-const mapStateToProps = (state) => ({
-  dragonDetails: state.dragonDetailsItens.dragonDetails,
-})
-
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  
-}, dispatch)
-
-export default connect(mapStateToProps, mapDispatchToProps)(DragonsDetails);
+export default DragonsDetails;
