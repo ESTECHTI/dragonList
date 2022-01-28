@@ -7,7 +7,8 @@ const INITIAL_STATE = {
   dragonLoginPassword: '',
 }
 
-const dragonLoginReducer = (state = INITIAL_STATE, action) => {
+const DragonLoginReducer = (state = INITIAL_STATE, action) => {
+  console.log('action', action.payload)
   switch (action.type) {
     case dragonLoginTypes.DRAGON_LOGIN_USER:
       return {
@@ -35,4 +36,4 @@ const dragonLoginReducer = (state = INITIAL_STATE, action) => {
   }
 }
 
-export default dragonLoginReducer
+export default DragonLoginReducer

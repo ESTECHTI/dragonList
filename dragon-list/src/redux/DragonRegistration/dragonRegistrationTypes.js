@@ -1,0 +1,7 @@
+const dragonRegistrationTypes = {
+  DRAGON_REGISTER_NAME: 'DRAGON_REGISTER_NAME',
+  DRAGON_REGISTER_TYPE: 'DRAGON_REGISTER_TYPE',
+  DRAGON_REGISTER_HISTORY: 'DRAGON_REGISTER_HISTORY',
+}
+
+export default dragonRegistrationTypes

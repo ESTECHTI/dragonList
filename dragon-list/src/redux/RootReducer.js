@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
 
-import dragonLoginReducer from './DragonLogin/dragonLoginReducer';
+import DragonLoginReducer from './DragonLogin/dragonLoginReducer';
 import dragonListReducer from './DragonList/dragonListReducer';
 import dragonDetailsReducer from './DragonDetails/dragonDetailsReducer';
+import DragonRegistrationReducer from './DragonRegistration/dragonRegistrationReducer'
 
 const rootReducer = combineReducers({
   dragonsList: dragonListReducer,
-  dragonLogin: dragonLoginReducer,
+  dragonLogin: DragonLoginReducer,
   dragonDetailsItens: dragonDetailsReducer,
+  dragonRegistration: DragonRegistrationReducer
 })
 
 export default rootReducer

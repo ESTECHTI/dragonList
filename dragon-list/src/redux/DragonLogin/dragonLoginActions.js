@@ -1,27 +1,20 @@
 import dragonLoginTypes from './dragonLoginTypes';
 
-function updateInputEmail(data) {
+function updateDragonName(data) {
   return {
     type: dragonLoginTypes.DRAGON_LOGIN_USER,
     payload: data
   }
 }
 
-function updateInputPassword(data) {
-  return {
-    type: dragonLoginTypes.DRAGON_LOGIN_PASSWORD,
-    payload: data
-  }
-}
-
 export const handleEmailChange = (event) => {
-  return (dispatch) => {
-    dispatch(updateInputEmail(event.target.value))
-  }
+  console.log('event', event.target.value)
+  return(dispatch) => {
+  dispatch(updateDragonName(event.target.value))
+}
 }
 
-export const handlePasswordChange = (event) => {
-  return (dispatch) => {
-    dispatch(updateInputPassword(event.target.value))
-  }
-}
+export const handlePasswordChange = (event) => ({
+  type: dragonLoginTypes.DRAGON_LOGIN_PASSWORD,
+  payload: event.target.value
+})

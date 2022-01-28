@@ -1,35 +1,47 @@
 /* eslint-disable no-useless-constructor */
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { returnDragonList } from '../../redux/DragonList/dragonListActions'
 import {Input} from '../../components/Input/Input'
 import { Button } from '../../components/Button/Button';
-import { handleEmailChange, handlePasswordChange } from '../../redux/DragonLogin/dragonLoginActions';
 import './Login.scss';
 
 const Login = () => {
   
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   
   useEffect(() => {
     returnDragonList()
   }, [])
   
-  const dragonLoginUser = useSelector(state => state.dragonLoginUser);
-  const dragonLoginPassword = useSelector(state => state.dragonLoginPassword);
-  const dragonUser = useSelector(state => state.dragonUser);
-  const dragonPassword = useSelector(state => state.dragonPassword);
+  const [user, setUser] = useState('');
+  const [dragonUser, setDragonUser] = useState('dragon');
+  
+  const [password, setPassword] = useState('');
+  const [dragonPassword, setDragonPassword] = useState('dragon');
+  
   
   const handleLoginAccess = () => {
-    
     if (
-      dragonLoginUser === dragonUser && 
-      dragonLoginPassword === dragonPassword
+      user === dragonUser && 
+      password === dragonPassword
     ) {
       navigate("/dragonsList");
     }
+  }
+  
+  useEffect(() => {
+    setDragonUser(dragonUser)
+  }, [dragonUser])
+  useEffect(() => {
+    setDragonPassword(dragonPassword)
+  }, [dragonPassword])
+  
+  const changeUser = (e) => {
+    setUser(e.target.value)
+  }
+  const changePassword = (e) => {
+    setPassword(e.target.value)
   }
     
   return (
@@ -40,18 +52,18 @@ const Login = () => {
         id="user"
         label="User"
         type="text"
-        onChange={() => dispatch(handleEmailChange)}
-        value={dragonLoginUser}
+        onChange={changeUser}
+        value={user}
       />
       <Input 
-        id="password"
+        id="passwordDragon"
         label="Password"
         type="password"
-        onChange={() => dispatch(handlePasswordChange)}
-        value={dragonLoginPassword}
+        onChange={changePassword}
+        value={password}
       />
       <div className="login--elements-button">
-        <Button label="Acessar" onClick={handleLoginAccess}/>
+        <Button label="Acessar" style={{ background: '#FBBD23' }} onClick={handleLoginAccess}/>
       </div>
     </div>
   )

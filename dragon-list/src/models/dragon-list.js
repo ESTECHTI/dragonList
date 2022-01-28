@@ -17,4 +17,9 @@ export default class DragonList {
     const res = await DragonApi.delete(`/api/v1/dragon/${id}`)
     return res
   }
+  
+  static async createDragon(items) {
+    const res = await DragonApi.post('/api/v1/dragon', items)
+    return res
+  }
 }

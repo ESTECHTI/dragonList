@@ -11,7 +11,6 @@ const DragonsList = () =>  {
   
   const dragonList = useSelector(state => state.dragonsList.dragonList);
   const [currDragonList, setCurrDragonList] = useState(dragonList);
-  console.log('currDragonList', currDragonList)
   const dispatch = useDispatch();
   
   const navigate = useNavigate();
@@ -36,8 +35,12 @@ const DragonsList = () =>  {
   }
   
   const removeDragonCard = (item) => {
-    console.log('item', item)
+    console.log('aqui')
     dispatch(removeDragon(item.id))
+  }
+  
+  const createNewDragon = () => {
+    navigate('/dragonRegistration')
   }
   
  const dragonsCardsList = () => {
@@ -50,9 +53,12 @@ const DragonsList = () =>  {
   return obj.map((item, i) => {
     return (
       <div className='card'>
-        <Card className='card--elements' key={i} label={item.name} onClick={() => dragonsDetailsItems(item)}/>
+        <Card className='card--elements' key={i} label={item.name} onClick={() => dragonsDetailsItems(item)}>teste</Card>
         <div className='card--elements-button'>
-          <Button style={{ background: 'red' }} onClick={() => removeDragonCard(item)} label="Remove" />
+          <Button style={{ background: 'red' }} key={i} onClick={() => removeDragonCard(item)} label="Delete" />
+        </div>
+        <div className='card--elements-button'>
+          <Button style={{ background: '#002559' }} key={i} onClick={() => removeDragonCard(item)} label="Edit" />
         </div>
       </div>
     )
@@ -61,7 +67,11 @@ const DragonsList = () =>  {
 
   return (
     <div className='body--elements'>
+      <div className='card--elements-button'>
+        <Button style={{ background: '#689F38' }} onClick={() => createNewDragon()}  label="Create new Dragon" />
+      </div>
       <p className='body--elements-title'>Dragons List Names</p>
+      <span className='body--elements-label'>Dragons Details</span>
       <div className='body--elements-cards'>
         {dragonsCardsList()}
       </div>

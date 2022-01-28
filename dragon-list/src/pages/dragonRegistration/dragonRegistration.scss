@@ -1,0 +1,17 @@
+@import '../scss/dragonsMixins.scss';
+
+.inputs--registration {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  .inputs--registration-title {
+    @include for-title
+  }
+  
+  .inputs--registration-input {
+    margin-bottom: 10px;
+  }
+}

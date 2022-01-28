@@ -1,21 +1,6 @@
-import React, {useState} from 'react';
 import './Input.scss'
 
-export const Input = ({ label, type, placeholder, id, ...otherProps }) => {
-  
-  const [isActive, setIsActive] = useState(false);
-  const [value, setValue] = useState('');
-
-  function HandleTextChange(text) {
-    setValue(text);
-
-    if (text !== '') {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  }
-  
+export const Input = ({ label, type, value, placeholder, onChange, id, ...otherProps }) => {
   return (
     <div className='input--elements'>
       <input
@@ -23,11 +8,11 @@ export const Input = ({ label, type, placeholder, id, ...otherProps }) => {
         id={id}
         placeholder={placeholder}
         value={value}
+        onChange={onChange}
         type={type}
-        onChange={(e) => HandleTextChange(e.target.value)}
         {...otherProps}
       />
-      <label className={isActive ? "Active" : ""} htmlFor={label}>{label}</label>
+      <label className={value ? "Active" : ""} htmlFor={label}>{label}</label>
     </div>
   )
 }
