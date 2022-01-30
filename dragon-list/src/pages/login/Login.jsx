@@ -1,7 +1,6 @@
 /* eslint-disable no-useless-constructor */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { returnDragonList } from '../../redux/DragonList/dragonListActions'
 import {Input} from '../../components/Input/Input'
 import { Button } from '../../components/Button/Button';
 import './Login.scss';
@@ -9,10 +8,6 @@ import './Login.scss';
 const Login = () => {
   
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    returnDragonList()
-  }, [])
   
   const [user, setUser] = useState('');
   const [dragonUser, setDragonUser] = useState('dragon');

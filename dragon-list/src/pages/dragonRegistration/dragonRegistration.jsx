@@ -18,7 +18,7 @@ const DragonRegistration = () => {
   const changeDragonName = (e) => {
     setDragonName(e.target.value)
   }
-  const changeDragonPassword = (e) => {
+  const changeDragonType = (e) => {
     setDragonType(e.target.value)
   }
   const changeDragonTextArea = (e) => {
@@ -49,7 +49,7 @@ const DragonRegistration = () => {
       <div className='inputs--registration-input'>
         <Input 
           id="user"
-          label="Nome"
+          label="Name"
           type="text"
           onChange={changeDragonName}
           value={dragonName}
@@ -58,22 +58,27 @@ const DragonRegistration = () => {
       <div className='inputs--registration-input'>
         <Input 
           id="user"
-          label="Tipo"
+          label="Type"
           type="text"
-          onChange={changeDragonPassword}
+          onChange={changeDragonType}
           value={dragonType}
         />
       </div>
       <div className='inputs--registration-input'>
         <TextArea 
           id="user"
-          label="Histórias"
+          label="Histories"
           changeValue={changeDragonTextArea}
           value={dragonTextArea}
         />
       </div>
       <div className='inputs--registration-input'>
-        <Button style={{ background: '#689F38' }} onClick={() => createNewDragon()} label="Register new Dragon" />
+        <Button 
+          style={{ background: '#689F38' }} 
+          onClick={() => createNewDragon()} 
+          label="Register new Dragon" 
+          disabled={true}
+        />
       </div>
     </div>
   )

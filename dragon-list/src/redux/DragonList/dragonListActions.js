@@ -16,10 +16,3 @@ export const returnDragonList = () => {
       })
   }
 }
-
-export const removeDragon = (id) => {
-  return (dispatch) => {
-    DragonList.deleteDragon(id)
-    dispatch(returnDragonList())
-  }
-}

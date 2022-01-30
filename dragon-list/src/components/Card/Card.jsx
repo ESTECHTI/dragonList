@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Cards.scss'
 
 export const Card = ({ label, ...otherProps }) => {

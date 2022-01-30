@@ -5,7 +5,6 @@ const INITIAL_STATE = {
 }
 
 const dragonDetailsReducer = (state = INITIAL_STATE, action) => {
-  console.log('action.payload', action.payload)
   switch (action.type) {
     case dragonDetailsTypes.SHOW_DRAGON_DETAILS:
       return {

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { returnDragonDetails } from '../../redux/DragonDetails/dragonDetailsActions.js';
 import './dragonsDetails.scss'
 import { formatDate } from '../../Controller/Controller.js'
@@ -32,10 +31,10 @@ const DragonsDetails = () => {
       <div className='body--elements-arrow'>
         <i className="body--elements-arrow-left" onClick={() => returPage()}></i>
       </div>
-      <p>Detalhes do Dragão</p>
-      <p>{formatDate(currdragonDetails?.createdAt)}</p>
-      <p>{currdragonDetails.name}</p>
-      <p>{currdragonDetails.type}</p>
+      <p className='body--elements-title'>Dragon Details</p>
+      <p className='body--elements-label'>{formatDate(currdragonDetails?.createdAt)}</p>
+      <p className='body--elements-label'>{currdragonDetails.name}</p>
+      <p className='body--elements-label'>{currdragonDetails.type}</p>
       
     </div>
   )

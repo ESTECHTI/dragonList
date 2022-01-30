@@ -23,8 +23,8 @@ export default class DragonList {
     return res
   }
   
-  static async editDragon(id) {
-    const res = await DragonApi.put(`/api/v1/dragon/${id}`)
+  static async editDragon(id, items) {
+    const res = await DragonApi.put(`/api/v1/dragon/${id}`, items)
     return res
   }
 }

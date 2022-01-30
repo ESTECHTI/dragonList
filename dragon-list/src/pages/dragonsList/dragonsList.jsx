@@ -41,17 +41,11 @@ const DragonsList = () =>  {
         if(response.status === 200) {
           dispatch(returnDragonList())
         }
-      })
+    })
   }
   
   const editDragonCard = (item) => {
-    DragonList.editDragon(item.id)
-      .then((response) => {
-        console.log('response', response)
-        // if(response.status === 200) {
-        //   dispatch(returnDragonList())
-        // }
-      })
+    navigate(`/dragonEdition/${item.id}`);
   }
   
   const createNewDragon = () => {
@@ -65,16 +59,16 @@ const DragonsList = () =>  {
     if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
     return 0;                   
   });
-  return obj.map((item, i) => {
+  return obj.map((item) => {
     return (
       <div className='card'>
-        <Card className='card--elements' key={i} label={item.name} onClick={() => dragonsDetailsItems(item)}>teste</Card>
+        <Card className='card--elements' key={item.id} label={item.name} onClick={() => dragonsDetailsItems(item)}>teste</Card>
         <div className='card--elements-buttons'>
           <div className='card--elements-button'>
-            <Button style={{ background: 'red' }} key={i} onClick={() => removeDragonCard(item)} label="Delete" />
+            <Button style={{ background: 'red' }} key={item.id} onClick={() => removeDragonCard(item)} label="Delete" />
           </div>
           <div className='card--elements-button'>
-            <Button style={{ background: '#002559' }} key={i} onClick={() => editDragonCard(item)} label="Edit" />
+            <Button style={{ background: '#002559' }} key={item.id} onClick={() => editDragonCard(item)} label="Edit" />
           </div>
         </div>
       </div>

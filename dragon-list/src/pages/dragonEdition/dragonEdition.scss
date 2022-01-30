@@ -1,0 +1,17 @@
+@import '../scss/dragonsMixins.scss';
+
+.inputs--edition {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  .inputs--edition-title {
+    @include for-title
+  }
+  
+  .inputs--edition-input {
+    margin-bottom: 10px;
+  }
+}
