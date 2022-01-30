@@ -1,13 +1,27 @@
-.input--elements {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  min-width: 350px;
+@media screen and (min-width: 320px) {
+  .input--elements {
+    display: flex;
+    width: 80vw;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .input--elements {
+    display: flex;
+    width: 60vw;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .input--elements {
+    display: flex;
+    width: 30vw;
+  }
 }
 
 .input--elements input {
   width: 100%;
-  height: 56px;
+  height: 50px;
   padding: 14px 16px 0 10px;
   outline: 0;
   border: 1px solid #ddd;
