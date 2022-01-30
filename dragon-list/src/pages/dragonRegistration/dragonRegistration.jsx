@@ -34,7 +34,6 @@ const DragonRegistration = () => {
     }
     DragonList.createDragon(itens)
       .then((response) => {
-        console.log('response', response)
         
         if (response.status === 201) {
           alert(response.statusText)

@@ -22,4 +22,9 @@ export default class DragonList {
     const res = await DragonApi.post('/api/v1/dragon', items)
     return res
   }
+  
+  static async editDragon(id) {
+    const res = await DragonApi.put(`/api/v1/dragon/${id}`)
+    return res
+  }
 }

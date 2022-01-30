@@ -4,4 +4,25 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  
+  .body--elements-arrow {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    margin-left: 30px;
+    
+    .body--elements-arrow-left {
+      border: solid black;
+      border-width: 0 6px 6px 0;
+      display: inline-block;
+      padding: 6px;
+      cursor: pointer;
+      
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+    .body--elements-arrow-left:active {
+      transform: translateY(0.1px);
+    }
+  }
 }

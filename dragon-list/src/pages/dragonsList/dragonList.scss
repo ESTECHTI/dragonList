@@ -1,38 +1,101 @@
 @import '../scss/dragonsMixins.scss';
 
-.card {
-  display: flex;
-  align-items: center;
-  .card--elements {
-    cursor: pointer;
-  }
-  .card--elements-button {
-    justify-content: center;
-    margin: 0px 5px;
-  }
-}
-.card--elements:active {
-  transform: translateY(4px);
-}
-.body--elements {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  
-  .body--elements-cards {
-    height: 500px;
-    overflow-y: auto;
-  }
-  
-  .body--elements-title {
-    @include for-title
-  }
-  .body--elements-label {
+@mixin for-card-buttons {
+  .card {
     display: flex;
-    width: 290px;
-    margin-top: 20px;
-    @include for-label
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .card--elements {
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .card--elements-buttons {
+      display: flex;
+      margin: 5px 0px 5px 0px;
+    }
+    .card--elements-button {
+      justify-content: center;
+      margin: 0px 5px 5px 0px;
+    }
+    .card--elements:active {
+      transform: translateY(4px);
+    }
+  }
+}
+
+@mixin for-scrolling {
+  ::-webkit-scrollbar {
+    width: 0em;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  @include for-card-buttons;
+  @include for-scrolling;
+  .body--elements {
+    @include for-center;
+    
+    .body--elements-cards {
+      height: 60vh;
+      overflow-y: auto;
+    }
+  
+    .body--elements-title {
+      @include for-title
+    }
+    .body--elements-label {
+      display: flex;
+      width: 290px;
+      margin-top: 20px;
+      @include for-label
+    }
+  }
+}
+
+
+@media screen and (min-width: 769px) {
+  @include for-card-buttons;
+  @include for-scrolling;
+  .body--elements {
+    @include for-center;
+    
+    .body--elements-cards {
+      height: 70vh;
+      overflow-y: auto;
+    }
+  
+    .body--elements-title {
+      @include for-title
+    }
+    .body--elements-label {
+      display: flex;
+      width: 100%;
+      margin: 20px 0px 20px 85px;
+      @include for-label
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  @include for-card-buttons;
+  @include for-scrolling;
+  .body--elements {
+    @include for-center;
+    
+    .body--elements-cards {
+      height: 500px;
+      overflow-y: auto;
+    }
+  
+    .body--elements-title {
+      @include for-title
+    }
+    .body--elements-label {
+      display: flex;
+      width: 34vw;
+      margin-top: 20px;
+      @include for-label
+    }
   }
 }

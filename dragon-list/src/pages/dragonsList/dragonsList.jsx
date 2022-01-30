@@ -1,8 +1,9 @@
 import React, { useEffect, useState }  from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { returnDragonList, removeDragon } from '../../redux/DragonList/dragonListActions';
+import { returnDragonList } from '../../redux/DragonList/dragonListActions';
 import { returnDragonDetails } from '../../redux/DragonDetails/dragonDetailsActions.js';
+import DragonList from '../../models/dragon-list.js'
 import { Card } from '../../components/Card/Card';
 import { Button } from '../../components/Button/Button'
 import './dragonList.scss';
@@ -35,8 +36,22 @@ const DragonsList = () =>  {
   }
   
   const removeDragonCard = (item) => {
-    console.log('aqui')
-    dispatch(removeDragon(item.id))
+    DragonList.deleteDragon(item.id)
+      .then((response) => {
+        if(response.status === 200) {
+          dispatch(returnDragonList())
+        }
+      })
+  }
+  
+  const editDragonCard = (item) => {
+    DragonList.editDragon(item.id)
+      .then((response) => {
+        console.log('response', response)
+        // if(response.status === 200) {
+        //   dispatch(returnDragonList())
+        // }
+      })
   }
   
   const createNewDragon = () => {
@@ -54,11 +69,13 @@ const DragonsList = () =>  {
     return (
       <div className='card'>
         <Card className='card--elements' key={i} label={item.name} onClick={() => dragonsDetailsItems(item)}>teste</Card>
-        <div className='card--elements-button'>
-          <Button style={{ background: 'red' }} key={i} onClick={() => removeDragonCard(item)} label="Delete" />
-        </div>
-        <div className='card--elements-button'>
-          <Button style={{ background: '#002559' }} key={i} onClick={() => removeDragonCard(item)} label="Edit" />
+        <div className='card--elements-buttons'>
+          <div className='card--elements-button'>
+            <Button style={{ background: 'red' }} key={i} onClick={() => removeDragonCard(item)} label="Delete" />
+          </div>
+          <div className='card--elements-button'>
+            <Button style={{ background: '#002559' }} key={i} onClick={() => editDragonCard(item)} label="Edit" />
+          </div>
         </div>
       </div>
     )

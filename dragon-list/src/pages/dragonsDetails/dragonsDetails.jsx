@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { returnDragonDetails } from '../../redux/DragonDetails/dragonDetailsActions.js';
 import './dragonsDetails.scss'
 import { formatDate } from '../../Controller/Controller.js'
@@ -9,7 +10,9 @@ const DragonsDetails = () => {
   const dragonDetails = useSelector(state => state.dragonDetailsItens.dragonDetails);
   const [currdragonDetails, setCurrdragonDetails] = useState(dragonDetails);
   const dispatch = useDispatch();
-  const { id } = useParams()
+  const { id } = useParams();
+  
+  const navigate = useNavigate();
   
   useEffect(() => {
     setCurrdragonDetails(dragonDetails)
@@ -20,8 +23,15 @@ const DragonsDetails = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
+  const returPage = () => {
+    navigate('/dragonsList')
+  }
+  
   return (
     <div className='body--elements-details'>
+      <div className='body--elements-arrow'>
+        <i className="body--elements-arrow-left" onClick={() => returPage()}></i>
+      </div>
       <p>Detalhes do Dragão</p>
       <p>{formatDate(currdragonDetails?.createdAt)}</p>
       <p>{currdragonDetails.name}</p>

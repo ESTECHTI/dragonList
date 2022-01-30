@@ -1,6 +1,5 @@
 @mixin for-card-wrapper {
   display: flex;
-  width: 100px;
   height: 100px;
   box-sizing: border-box;
   border-radius: 10px;
@@ -8,9 +7,19 @@
   background: #FFFFFF;
   margin: 5px;
   padding: 10px;
+  box-shadow: 5px 5px 5px #999697;
 }
+
 @media screen and (min-width: 320px) {
   .card--elements {
-    @include for-card-wrapper
+    @include for-card-wrapper;
+     width: 90vw;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .card--elements {
+    @include for-card-wrapper;
+     width: 30vw;
   }
 }
