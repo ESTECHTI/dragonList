@@ -34,7 +34,6 @@ const DragonRegistration = () => {
     }
     DragonList.createDragon(itens)
       .then((response) => {
-        
         if (response.status === 201) {
           alert(response.statusText)
           navigate("/dragonsList");
@@ -74,10 +73,9 @@ const DragonRegistration = () => {
       </div>
       <div className='inputs--registration-input'>
         <Button 
-          style={{ background: '#689F38' }} 
-          onClick={() => createNewDragon()} 
+          className="btn btn--register" 
+          onClick={() => createNewDragon()}
           label="Register new Dragon" 
-          disabled={true}
         />
       </div>
     </div>

@@ -1,0 +1,5 @@
+@import '../scss/dragonsMixins.scss';
+
+.inputs--contents {
+  @include for-center;
+}

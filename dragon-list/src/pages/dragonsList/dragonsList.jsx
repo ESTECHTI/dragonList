@@ -62,13 +62,13 @@ const DragonsList = () =>  {
   return obj.map((item) => {
     return (
       <div className='card'>
-        <Card className='card--elements' key={item.id} label={item.name} onClick={() => dragonsDetailsItems(item)}>teste</Card>
+        <Card className='card--elements' key={item.id} label={item.name} onClick={() => dragonsDetailsItems(item)}></Card>
         <div className='card--elements-buttons'>
           <div className='card--elements-button'>
-            <Button style={{ background: 'red' }} key={item.id} onClick={() => removeDragonCard(item)} label="Delete" />
+            <Button className="btn btn--delete" key={item.id} onClick={() => removeDragonCard(item)} label="Delete" />
           </div>
           <div className='card--elements-button'>
-            <Button style={{ background: '#002559' }} key={item.id} onClick={() => editDragonCard(item)} label="Edit" />
+            <Button className="btn btn--edit" key={item.id} onClick={() => editDragonCard(item)} label="Edit" />
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@ const DragonsList = () =>  {
   return (
     <div className='body--elements'>
       <div className='card--elements-button'>
-        <Button style={{ background: '#689F38' }} onClick={() => createNewDragon()}  label="Create new Dragon" />
+        <Button className="btn btn--create" onClick={() => createNewDragon()}  label="Create new Dragon" />
       </div>
       <p className='body--elements-title'>Dragons List Names</p>
       <span className='body--elements-label'>Dragons Details</span>

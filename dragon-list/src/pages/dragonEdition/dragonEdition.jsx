@@ -84,7 +84,7 @@ const DragonEdition = () => {
         />
       </div>
       <div className='inputs--registration-input'>
-        <Button style={{ background: '#689F38' }} onClick={() => updateDragon()} label="Update" />
+        <Button className="btn btn--edit" onClick={() => updateDragon()} label="Update" />
       </div>
     </div>
   )
