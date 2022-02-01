@@ -6,12 +6,14 @@ import { returnDragonDetails } from '../../redux/DragonDetails/dragonDetailsActi
 import DragonList from '../../models/dragon-list.js'
 import { Card } from '../../components/Card/Card';
 import { Button } from '../../components/Button/Button'
+import Toast from '../../components/Toast/Toast';
 import './dragonList.scss';
 
 const DragonsList = () =>  {
   
   const dragonList = useSelector(state => state.dragonsList.dragonList);
   const [currDragonList, setCurrDragonList] = useState(dragonList);
+  const [dragonRemoved, setDragonRemoved] = useState('');
   const dispatch = useDispatch();
   
   const navigate = useNavigate();
@@ -39,6 +41,8 @@ const DragonsList = () =>  {
     DragonList.deleteDragon(item.id)
       .then((response) => {
         if(response.status === 200) {
+          showToast()
+          setDragonRemoved(response.statusText)
           dispatch(returnDragonList())
         }
     })
@@ -62,7 +66,7 @@ const DragonsList = () =>  {
   return obj.map((item) => {
     return (
       <div className='card'>
-        <Card className='card--elements' key={item.id} label={item.name} onClick={() => dragonsDetailsItems(item)}></Card>
+        <Card className={'card card--elements'} key={item.id} label={item.name} onClick={() => dragonsDetailsItems(item)}></Card>
         <div className='card--elements-buttons'>
           <div className='card--elements-button'>
             <Button className="btn btn--delete" key={item.id} onClick={() => removeDragonCard(item)} label="Delete" />
@@ -75,9 +79,20 @@ const DragonsList = () =>  {
     )
   })
 }
+ 
+  const showToast = () => {
+    const x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+  }
 
   return (
     <div className='body--elements'>
+      <Toast
+        idToast={'snackbar'}
+        label={dragonRemoved}
+      />
+      <img src={require('../../assets/dragon.jpg')} alt="dragon" />
       <div className='card--elements-button'>
         <Button className="btn btn--create" onClick={() => createNewDragon()}  label="Create new Dragon" />
       </div>

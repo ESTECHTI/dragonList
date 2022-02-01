@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Input} from '../../components/Input/Input'
 import { Button } from '../../components/Button/Button';
-import Toast from '../../components/Toast/Toast'
+import Toast from '../../components/Toast/Toast';
 import './Login.scss';
 
 const Login = () => {

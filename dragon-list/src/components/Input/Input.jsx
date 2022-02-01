@@ -1,10 +1,11 @@
 import './Input.scss'
 
-export const Input = ({ label, type, value, placeholder, onChange, id, ...otherProps }) => {
+export const Input = ({ className, label, type, value, placeholder, onChange, id, ...otherProps }) => {
   return (
     <div className='input--elements'>
       <input
-        className='input--elements-value'
+        // eslint-disable-next-line no-sequences
+        className={'input--elements-value', className}
         id={id}
         placeholder={placeholder}
         value={value}
