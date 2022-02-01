@@ -1,5 +1,26 @@
 @import '../scss/dragonsMixins.scss';
 
+@mixin for-card-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  border-radius: 10px;
+  border: 0;
+  color: #fff;
+  margin: 5px;
+  padding: 10px;
+  box-shadow: 5px 5px 5px #999697;
+  cursor: pointer;
+}
+
+@mixin for-background-image {
+  background-image: linear-gradient(to right, #f6d365 0%, #fa3803 51%, #f6d365 100%);
+}
+
 .body--elements-details {
   display: flex;
   flex-direction: column;
@@ -30,7 +51,40 @@
   .body--elements-title {
     @include for-title
   }
-  .body--elements-label {
-    @include for-label
+  .body--elements-p {
+    @include for-card-details;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .body--elements-p {
+    @include for-card-details;
+    width: 80vw;
+    font-size: 20px;
+    @include for-background-image;
+  }
+}
+@media screen and (min-width: 769px) {
+  .body--elements-p {
+    @include for-card-details;
+    width: 70vw;
+    font-size: 20px;
+    @include for-background-image;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .body--elements-p {
+    @include for-card-details;
+    width: 70vw;
+    font-size: 20px;
+    @include for-background-image;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .body--elements-p {
+    @include for-card-details;
+    width: 50vw;
+    font-size: 20px;
+    @include for-background-image;
   }
 }

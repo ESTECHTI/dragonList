@@ -31,10 +31,13 @@ const DragonsDetails = () => {
       <div className='body--elements-arrow'>
         <i className="body--elements-arrow-left" onClick={() => returPage()}></i>
       </div>
+      <img src={require('../../assets/dragon.jpg')} alt="dragon" />
       <p className='body--elements-title'>Dragon Details</p>
-      <p className='body--elements-label'>{formatDate(currdragonDetails?.createdAt)}</p>
-      <p className='body--elements-label'>{currdragonDetails.name}</p>
-      <p className='body--elements-label'>{currdragonDetails.type}</p>
+      <div className='body--elements-p p'>
+        <p className='body--elements-label'>{formatDate(currdragonDetails?.createdAt)}</p>
+        <p className='body--elements-label'>{currdragonDetails.name}</p>
+        <p className='body--elements-label'>{currdragonDetails.type}</p>
+      </div>
       
     </div>
   )

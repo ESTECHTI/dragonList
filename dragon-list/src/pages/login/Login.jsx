@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {Input} from '../../components/Input/Input'
 import { Button } from '../../components/Button/Button';
 import Toast from '../../components/Toast/Toast';
+import Router from '../../router/index.js'
 import './Login.scss';
 
 const Login = () => {
@@ -30,6 +31,7 @@ const Login = () => {
       setTimeout(function () { 
         navigate("/dragonsList");
       }, 3000);
+      return true
     }
   }
   
@@ -76,6 +78,7 @@ const Login = () => {
     
   return (
     <div className='login--elements-input'>
+      <Router handleLoginAccess={handleLoginAccess()}/>
       <Toast 
         idToast={'snackbar'}
         label={labelToast()}
@@ -88,7 +91,7 @@ const Login = () => {
         <img src={require('../../assets/dragon.jpg')} alt="dragon"/>
         <p className='login--elements-title'>Dragon</p>
       </div>
-      <p className='login--elements-subtitle'>Faca seu login na plataforma</p>
+      <p className='login--elements-subtitle'>Faca seu login no AppDragon</p>
       <div className='login--elements-color'>
         <Input 
           className="login--elements-email"
@@ -108,7 +111,6 @@ const Login = () => {
         <div className="login--elements-button">
           <Button label="Acessar" className="btn btn--primary" onClick={handleLoginAccess}/>
         </div>
-        {/* <p>Não tem uma conta? <span className='login--elements-register'>Registre-se</span></p> */}
       </div>
     </div>
   )

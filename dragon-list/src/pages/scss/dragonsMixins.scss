@@ -2,11 +2,15 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 25px;
   color: #4d4c4c;
 }
 @mixin for-sub-title {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -18,7 +22,7 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 25px;
   color: #4d4c4c;
 }

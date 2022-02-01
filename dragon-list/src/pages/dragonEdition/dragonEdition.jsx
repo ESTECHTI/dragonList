@@ -116,12 +116,13 @@ const DragonEdition = () => {
         idToast={'snackbar-success'}
         label={dragonEdition}
       />
+      <img src={require('../../assets/dragon.jpg')} alt="dragon" />
       <p className='inputs--edition-title'>Dragon Edition</p>
       <div className='inputs--edition-input'>
         <Input
           id="user"
           className={isActiveUser ? 'inputs--edition-user' : null} 
-          label="Nome"
+          label="Name"
           type="text"
           onChange={changeDragonName}
           value={dragonName}
@@ -131,7 +132,7 @@ const DragonEdition = () => {
         <Input
           id="user"
           className={isActiveType ? 'inputs--edition-user' : null}  
-          label="Tipo"
+          label="Type"
           type="text"
           onChange={changeDragonType}
           value={dragonType}
@@ -141,7 +142,7 @@ const DragonEdition = () => {
         <TextArea
           id="user"
           styledTextArea={isActiveTextArea ? styleRed : styleProps} 
-          label="Histórias"
+          label="Histories"
           changeValue={changeDragonTextArea}
           value={dragonTextArea}
         />
