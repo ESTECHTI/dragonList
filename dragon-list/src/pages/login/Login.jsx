@@ -1,10 +1,11 @@
 /* eslint-disable no-useless-constructor */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 import {Input} from '../../components/Input/Input'
 import { Button } from '../../components/Button/Button';
 import Toast from '../../components/Toast/Toast';
-import Router from '../../router/index.js'
+import { authUser } from '../../redux/DragonList/dragonListActions'
 import './Login.scss';
 
 const Login = () => {
@@ -16,22 +17,29 @@ const Login = () => {
   
   const [password, setPassword] = useState('');
   const [dragonPassword, setDragonPassword] = useState('dragon');
+  const [isActiveUser, setActiveUser] = useState(false);
+  const [isActivePassword, setActivePassword] = useState(false);
   
+  const dispatch = useDispatch();;
   
   const handleLoginAccess = () => {
     if (!user || ! password) {
+      setActiveUser(true)
+      setActivePassword(true)
       showToast()
+      dispatch(authUser(false))
     } else if (user !== dragonUser || password !== dragonPassword) {
       showToast()
+      dispatch(authUser(false))
     } else if (
       user === dragonUser && 
       password === dragonPassword
     ) {
       showToastSuccess()
       setTimeout(function () { 
+      dispatch(authUser(true))
         navigate("/dragonsList");
       }, 3000);
-      return true
     }
   }
   
@@ -44,9 +52,11 @@ const Login = () => {
   
   const changeUser = (e) => {
     setUser(e.target.value)
+    setActiveUser(false)
   }
   const changePassword = (e) => {
     setPassword(e.target.value)
+    setActivePassword(false)
   }
   
   const showToast = () => {
@@ -78,7 +88,6 @@ const Login = () => {
     
   return (
     <div className='login--elements-input'>
-      <Router handleLoginAccess={handleLoginAccess()}/>
       <Toast 
         idToast={'snackbar'}
         label={labelToast()}
@@ -93,21 +102,26 @@ const Login = () => {
       </div>
       <p className='login--elements-subtitle'>Faca seu login no AppDragon</p>
       <div className='login--elements-color'>
-        <Input 
-          className="login--elements-email"
-          id="user"
-          label="User"
-          type="text"
-          onChange={changeUser}
-          value={user}
-        />
-        <Input 
-          id="passwordDragon"
-          label="Password"
-          type="password"
-          onChange={changePassword}
-          value={password}
-        />
+        <div className='login--elements-button'>
+          <Input 
+            className={isActiveUser ? 'inputs--elements-user' : ''} 
+            id="user"
+            label="User"
+            type="text"
+            onChange={changeUser}
+            value={user}
+          />
+        </div>
+        <div className='login--elements-button'>
+          <Input 
+            className={isActivePassword ? 'inputs--elements-user' : ''} 
+            id="passwordDragon"
+            label="Password"
+            type="password"
+            onChange={changePassword}
+            value={password}
+          />
+        </div>
         <div className="login--elements-button">
           <Button label="Acessar" className="btn btn--primary" onClick={handleLoginAccess}/>
         </div>

@@ -1,7 +1,8 @@
 import dragonListTypes from "./dragonListTypes";
 
 const INITIAL_STATE = {
-  dragonList: ''
+  dragonList: '',
+  auth: false
 }
 
 const dragonListReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,11 @@ const dragonListReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state, 
         dragonList: action.payload
+      }
+    case dragonListTypes.SHOW_AUTH:
+      return {
+        ...state, 
+        auth: action.payload
       }
   
     default:

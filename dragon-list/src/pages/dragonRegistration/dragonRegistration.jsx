@@ -109,7 +109,7 @@ const DragonRegistration = () => {
       <p className='inputs--registration-title'>Dragon registration</p>
       <div className='inputs--registration-input'>
         <Input
-          className={isActiveUser ? 'inputs--registration-user' : null} 
+          className={isActiveUser ? 'inputs--registration-user' : ''} 
           id="user"
           label="Name"
           type="text"
@@ -119,7 +119,7 @@ const DragonRegistration = () => {
       </div>
       <div className='inputs--registration-input'>
         <Input
-          className={isActiveType ? 'inputs--registration-user' : null}  
+          className={isActiveType ? 'inputs--registration-user' : ''}  
           id="user"
           label="Type"
           type="text"

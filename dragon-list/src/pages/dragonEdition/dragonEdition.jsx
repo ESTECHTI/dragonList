@@ -121,7 +121,7 @@ const DragonEdition = () => {
       <div className='inputs--edition-input'>
         <Input
           id="user"
-          className={isActiveUser ? 'inputs--edition-user' : null} 
+          className={isActiveUser ? 'inputs--edition-user' : ''} 
           label="Name"
           type="text"
           onChange={changeDragonName}
@@ -131,7 +131,7 @@ const DragonEdition = () => {
       <div className='inputs--edition-input'>
         <Input
           id="user"
-          className={isActiveType ? 'inputs--edition-user' : null}  
+          className={isActiveType ? 'inputs--edition-user' : ''}  
           label="Type"
           type="text"
           onChange={changeDragonType}
